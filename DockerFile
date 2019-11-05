@@ -1,10 +1,12 @@
 FROM ubuntu
 ENV ORA_CLOUD_CLUSTER="ASHBURN"
-LABEL MAINTAINER TESTKARTHIK
-ARG LICENSE_KEY='123-0001-223"
-COPY sample.sh /code/sample.sh
-copy testfile /code/testfile
-RUN echo "LICENSEKEY is " $LICENSE_KEY
-RUN chmod +x /code/sample.sh
+ARG LICENSE_KEY="123-0001-223"
+LABEL MAINTAINER dj@devops.com
+#RUN mkdir /code
+COPY Sample.sh /code/Sample.sh
+COPY testfile /code/testfile
+RUN chmod +x /code/Sample.sh
+RUN echo "LICENSE KEY IS "$LICENSE_KEY
 WORKDIR /code
-CMD sh sample.sh testfile
+#ENTRYPOINT ["sh","Sample.sh"]
+CMD sh Sample.sh testfile
